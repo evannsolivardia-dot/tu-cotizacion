@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Tu Evento - Equipos profesionales para eventos y cotizaciones">
+
+    <title>Tu Evento | Equipos y Cotizaciones</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         BARRA DE NAVEGACIÓN
+    ====================================================== -->
+
+    <header class="header">
+
+        <div class="container nav">
+
+            <a href="#" class="logo">
+                <span class="logo-icon">TE</span>
+                <span class="logo-text">
+                    TU <strong>EVENTO</strong>
+                </span>
+            </a>
+
+            <nav class="menu">
+
+                <a href="#inicio">Inicio</a>
+
+                <a href="#equipos">Equipos</a>
+
+                <a href="#servicios">Servicios</a>
+
+                <a href="#eventos">Eventos</a>
+
+            </nav>
+
+            <button
+                class="quote-button"
+                onclick="abrirCotizacion()">
+
+                Mi cotización
+
+                <span id="contadorCarrito">0</span>
+
+            </button>
+
+            <button
+                class="menu-mobile"
+                onclick="abrirMenu()">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MENÚ MÓVIL
+    ====================================================== -->
+
+    <div
+        id="menuMobile"
+        class="menu-mobile-container">
+
+        <a href="#inicio">Inicio</a>
+
+        <a href="#equipos">Equipos</a>
+
+        <a href="#servicios">Servicios</a>
+
+        <a href="#eventos">Eventos</a>
+
+        <button onclick="abrirCotizacion()">
+            Mi cotización
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         HERO / PORTADA
+    ====================================================== -->
+
+    <section
+        id="inicio"
+        class="hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+
+            <p class="hero-small">
+                PRODUCCIÓN PROFESIONAL DE EVENTOS
+            </p>
+
+            <h1>
+                TU EVENTO.
+                <br>
+                <span>TU EXPERIENCIA.</span>
+            </h1>
+
+            <p class="hero-description">
+
+                Sonido profesional, iluminación,
+                pantallas LED y soluciones para
+                todo tipo de eventos.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#equipos"
+                    class="btn-primary">
+
+                    VER EQUIPOS
+
+                </a>
+
+                <button
+                    onclick="abrirCotizacion()"
+                    class="btn-secondary">
+
+                    CREAR COTIZACIÓN
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CATEGORÍAS
+    ====================================================== -->
+
+    <section class="categories">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <p>CATEGORÍAS</p>
+
+                <h2>
+                    TODO PARA TU EVENTO
+                </h2>
+
+                <span></span>
+
+            </div>
+
+
+            <div class="category-grid">
+
+                <button
+                    class="category-card"
+                    onclick="filtrarCategoria('Audio')">
+
+                    <div class="category-icon">
+                        🔊
+                    </div>
+
+                    <h3>Audio</h3>
+
+                    <p>
+                        Sistemas de sonido
+                        profesional.
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="category-card"
+                    onclick="filtrarCategoria('Iluminación')">
+
+                    <div class="category-icon">
+                        💡
+                    </div>
+
+                    <h3>Iluminación</h3>
+
+                    <p>
+                        Luces para escenarios
+                        y eventos.
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="category-card"
+                    onclick="filtrarCategoria('Pantallas LED')">
+
+                    <div class="category-icon">
+                        🖥️
+                    </div>
+
+                    <h3>Pantallas LED</h3>
+
+                    <p>
+                        Soluciones visuales
+                        profesionales.
+                    </p>
+
+                </button>
+
+
+                <button
+                    class="category-card"
+                    onclick="filtrarCategoria('Estructuras')">
+
+                    <div class="category-icon">
+                        🏗️
+                    </div>
+
+                    <h3>Estructuras</h3>
+
+                    <p>
+                        Truss y estructuras
+                        para montaje.
+                    </p>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CATÁLOGO
+    ====================================================== -->
+
+    <section
+        id="equipos"
+        class="catalog">
+
+        <div class="container">
+
+            <div class="catalog-header">
+
+                <div class="section-title left">
+
+                    <p>NUESTRO CATÁLOGO</p>
+
+                    <h2>
+                        EQUIPOS
+                    </h2>
+
+                    <span></span>
+
+                </div>
+
+                <p class="catalog-description">
+
+                    Explora nuestros equipos
+                    profesionales y agrégalos a
+                    tu cotización.
+
+                </p>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="filters">
+
+                <div class="filter-group">
+
+                    <label for="filtroCategoria">
+                        Categoría
+                    </label>
+
+                    <select
+                        id="filtroCategoria"
+                        onchange="aplicarFiltros()">
+
+                        <option value="Todos">
+                            Todas
+                        </option>
+
+                        <option value="Audio">
+                            Audio
+                        </option>
+
+                        <option value="Iluminación">
+                            Iluminación
+                        </option>
+
+                        <option value="Pantallas LED">
+                            Pantallas LED
+                        </option>
+
+                        <option value="Estructuras">
+                            Estructuras
+                        </option>
+
+                        <option value="Efectos">
+                            Efectos
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group">
+
+                    <label for="filtroTipo">
+                        Tipo
+                    </label>
+
+                    <select
+                        id="filtroTipo"
+                        onchange="aplicarFiltros()">
+
+                        <option value="Todos">
+                            Todos
+                        </option>
+
+                        <option value="Line Array">
+                            Line Array
+                        </option>
+
+                        <option value="Subwoofer">
+                            Subwoofer
+                        </option>
+
+                        <option value="Monitor">
+                            Monitor
+                        </option>
+
+                        <option value="Consola">
+                            Consola
+                        </option>
+
+                        <option value="Moving Head">
+                            Moving Head
+                        </option>
+
+                        <option value="Pantalla LED">
+                            Pantalla LED
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="filter-group search">
+
+                    <label for="buscador">
+                        Buscar
+                    </label>
+
+                    <input
+                        id="buscador"
+                        type="text"
+                        placeholder="Buscar equipo..."
+                        oninput="aplicarFiltros()">
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCTOS -->
+
+            <div
+                id="productos"
+                class="product-grid">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVICIOS
+    ====================================================== -->
+
+    <section
+        id="servicios"
+        class="services">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <p>SERVICIOS</p>
+
+                <h2>
+                    SOLUCIONES PARA TU EVENTO
+                </h2>
+
+                <span></span>
+
+            </div>
+
+
+            <div class="services-grid">
+
+                <article class="service">
+
+                    <div class="service-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Sonido profesional
+                    </h3>
+
+                    <p>
+                        Sistemas de audio para
+                        eventos pequeños,
+                        corporativos y grandes
+                        producciones.
+                    </p>
+
+                </article>
+
+
+                <article class="service">
+
+                    <div class="service-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Iluminación
+                    </h3>
+
+                    <p>
+                        Diseño y montaje de
+                        iluminación para
+                        escenarios y eventos.
+                    </p>
+
+                </article>
+
+
+                <article class="service">
+
+                    <div class="service-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Pantallas LED
+                    </h3>
+
+                    <p>
+                        Soluciones visuales
+                        para conciertos,
+                        eventos y presentaciones.
+                    </p>
+
+                </article>
+
+
+                <article class="service">
+
+                    <div class="service-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Producción completa
+                    </h3>
+
+                    <p>
+                        Nos encargamos del
+                        montaje técnico de
+                        principio a fin.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         EVENTOS
+    ====================================================== -->
+
+    <section
+        id="eventos"
+        class="events">
+
+        <div class="container">
+
+            <div class="section-title left">
+
+                <p>EXPERIENCIA</p>
+
+                <h2>
+                    NUESTROS EVENTOS
+                </h2>
+
+                <span></span>
+
+            </div>
+
+
+            <div class="events-grid">
+
+                <article class="event-card">
+
+                    <div class="event-image">
+                        🎤
+                    </div>
+
+                    <div class="event-content">
+
+                        <span>
+                            CONCIERTO
+                        </span>
+
+                        <h3>
+                            Producción musical
+                        </h3>
+
+                        <p>
+                            Sonido e iluminación
+                            profesional.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="event-card">
+
+                    <div class="event-image">
+                        💍
+                    </div>
+
+                    <div class="event-content">
+
+                        <span>
+                            BODA
+                        </span>
+
+                        <h3>
+                            Celebraciones
+                        </h3>
+
+                        <p>
+                            Producción audiovisual
+                            para momentos especiales.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="event-card">
+
+                    <div class="event-image">
+                        🏢
+                    </div>
+
+                    <div class="event-content">
+
+                        <span>
+                            CORPORATIVO
+                        </span>
+
+                        <h3>
+                            Eventos empresariales
+                        </h3>
+
+                        <p>
+                            Audio, video y
+                            presentación profesional.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="cta">
+
+        <div class="container">
+
+            <h2>
+                ¿TIENES UN EVENTO EN MENTE?
+            </h2>
+
+            <p>
+                Selecciona los equipos que necesitas
+                y crea tu propia cotización.
+            </p>
+
+            <button
+                onclick="abrirCotizacion()"
+                class="btn-primary">
+
+                CREAR MI COTIZACIÓN
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div>
+
+                <div class="logo footer-logo">
+
+                    <span class="logo-icon">
+                        TE
+                    </span>
+
+                    <span class="logo-text">
+                        TU <strong>EVENTO</strong>
+                    </span>
+
+                </div>
+
+                <p>
+                    Producción profesional
+                    para eventos.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    NAVEGACIÓN
+                </h4>
+
+                <a href="#inicio">
+                    Inicio
+                </a>
+
+                <a href="#equipos">
+                    Equipos
+                </a>
+
+                <a href="#servicios">
+                    Servicios
+                </a>
+
+                <a href="#eventos">
+                    Eventos
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    CONTACTO
+                </h4>
+
+                <p>
+                    Panamá
+                </p>
+
+                <p>
+                    +507 0000-0000
+                </p>
+
+                <p>
+                    contacto@tuevento.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Tu Evento. Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         MODAL DE COTIZACIÓN
+    ====================================================== -->
+
+    <div
+        id="modalCotizacion"
+        class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="close-modal"
+                onclick="cerrarCotizacion()">
+
+                ×
+
+            </button>
+
+
+            <div class="section-title left">
+
+                <p>TU EVENTO</p>
+
+                <h2>
+                    MI COTIZACIÓN
+                </h2>
+
+                <span></span>
+
+            </div>
+
+
+            <div
+                id="listaCotizacion"
+                class="quote-list">
+
+            </div>
+
+
+            <div class="quote-total">
+
+                <span>
+                    TOTAL ESTIMADO
+                </span>
+
+                <strong id="totalCotizacion">
+                    $0.00
+                </strong>
+
+            </div>
+
+
+            <button
+                onclick="mostrarFormulario()"
+                class="btn-primary full">
+
+                SOLICITAR COTIZACIÓN
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL FORMULARIO CLIENTE
+    ====================================================== -->
+
+    <div
+        id="modalCliente"
+        class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="close-modal"
+                onclick="cerrarFormulario()">
+
+                ×
+
+            </button>
+
+
+            <div class="section-title left">
+
+                <p>DATOS DEL CLIENTE</p>
+
+                <h2>
+                    SOLICITAR COTIZACIÓN
+                </h2>
+
+                <span></span>
+
+            </div>
+
+
+            <form
+                id="formCliente"
+                onsubmit="enviarCotizacion(event)">
+
+                <div class="form-row">
+
+                    <div class="form-field">
+
+                        <label>
+                            Nombre
+                        </label>
+
+                        <input
+                            type="text"
+                            id="clienteNombre"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            Teléfono
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="clienteTelefono"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="clienteCorreo"
+                        required>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-field">
+
+                        <label>
+                            Tipo de evento
+                        </label>
+
+                        <select
+                            id="tipoEvento"
+                            required>
+
+                            <option value="">
+                                Seleccionar
+                            </option>
+
+                            <option>
+                                Concierto
+                            </option>
+
+                            <option>
+                                Boda
+                            </option>
+
+                            <option>
+                                Evento corporativo
+                            </option>
+
+                            <option>
+                                Cumpleaños
+                            </option>
+
+                            <option>
+                                Evento escolar
+                            </option>
+
+                            <option>
+                                Otro
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-field">
+
+                        <label>
+                            Fecha del evento
+                        </label>
+
+                        <input
+                            type="date"
+                            id="fechaEvento"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Lugar del evento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="lugarEvento"
+                        required>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Información adicional
+                    </label>
+
+                    <textarea
+                        id="mensajeCliente"
+                        rows="4"
+                        placeholder="Cuéntanos más sobre tu evento...">
+                    </textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn-primary full">
+
+                    ENVIAR SOLICITUD
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="datos.js"></script>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
