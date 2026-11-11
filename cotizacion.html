@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tu Evento | Mi cotización</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="cotizacion">
+<header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><img class="brand-logo" src="logo-agonysystem.png" alt="Agonysystem - Simplemente lo que necesitas"></a><button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">☰</button><nav class="main-nav" id="mainNav"><a href="index.html" data-nav="inicio">Inicio</a><a href="equipos.html" data-nav="equipos">Equipos</a><a href="servicios.html" data-nav="servicios">Servicios</a><a href="eventos.html" data-nav="eventos">Eventos</a></nav><a class="quote-link active-quote" href="cotizacion.html">Mi cotización <span class="cart-count" data-cart-count>0</span></a></div></header>
+<main class="page-main container"><div class="page-heading"><p class="eyebrow">TU SELECCIÓN</p><h1>Mi cotización</h1><p>Los equipos que agregues desde el catálogo aparecerán aquí. Tu selección se conserva al cambiar de página.</p></div>
+<div class="quote-layout"><section class="quote-box"><div class="quote-box-head"><h2>Equipos seleccionados</h2><a href="equipos.html" class="text-link">+ Agregar equipos</a></div><div id="quoteItems"></div><div class="quote-summary"><div><span>Subtotal con precios registrados</span><strong id="quoteSubtotal">$0.00</strong></div><p id="quoteNotice">Los artículos sin precio se mostrarán como “Por consultar”. El total final será confirmado por el equipo de producción.</p></div></section>
+<aside class="request-box"><p class="eyebrow">SIGUIENTE PASO</p><h2>Solicita tu cotización</h2><form id="requestForm">
+<label>Nombre completo<input name="nombre" required autocomplete="name"></label>
+<label>Teléfono<input name="telefono" type="tel" required autocomplete="tel"></label>
+<label>Correo electrónico<input name="correo" type="email" required autocomplete="email"></label>
+<label>Tipo de evento<select name="tipoEvento" required><option value="">Seleccionar</option><option>Concierto</option><option>Boda</option><option>Corporativo</option><option>Escolar</option><option>Celebración</option><option>Otro</option></select></label>
+<label>Fecha del evento<input name="fecha" type="date" required></label>
+<label>Lugar del evento<input name="lugar" required></label>
+<label>Detalles adicionales<textarea name="mensaje" rows="4" placeholder="Cantidad de asistentes, horario, necesidades..."></textarea></label>
+<button class="btn btn-gold btn-block" type="submit">Preparar solicitud</button>
+</form><p class="form-note">Esta versión prepara la solicitud en tu navegador. Todavía no la envía a un servidor ni guarda datos en una base de datos compartida.</p></aside></div>
+</main><footer class="footer"><div class="container footer-inner"><a class="brand" href="index.html"><img class="brand-logo" src="logo-agonysystem.png" alt="Agonysystem - Simplemente lo que necesitas"></a><p>Producción profesional para eventos · Panamá</p><small>© 2026 Tu Evento.</small></div></footer><script src="datos.js"></script><script src="app.js"></script></body></html>
