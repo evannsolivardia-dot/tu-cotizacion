@@ -50,7 +50,7 @@ function renderizarProductos(lista) {
     const card = document.createElement("article");
     card.className = "product-card";
     card.innerHTML = `
-      <div class="product-visual"><span>${escaparHTML(equipo.icono)}</span><small>${escaparHTML(equipo.categoria)}</small></div>
+      <div class="product-visual">${equipo.imagen ? `<img class="product-photo" src="${escaparHTML(equipo.imagen)}" alt="${escaparHTML(equipo.nombre)}" loading="lazy">` : ""}<span>${escaparHTML(equipo.icono)}</span><small>${escaparHTML(equipo.categoria)}</small></div>
       <div class="product-content">
         <p class="card-index">${escaparHTML(equipo.marca)} / ${escaparHTML(equipo.modelo)}</p>
         <h2>${escaparHTML(equipo.nombre)}</h2>
@@ -63,7 +63,17 @@ function renderizarProductos(lista) {
       </div>`;
     grid.appendChild(card);
   });
+  ocultarImagenesRotas(grid);
   grid.querySelectorAll("[data-add]").forEach(btn => btn.addEventListener("click", () => agregarAlCarrito(Number(btn.dataset.add))));
+}
+
+// Si la foto de un equipo aún no existe, se quita y queda visible el ícono.
+function ocultarImagenesRotas(contenedor) {
+  contenedor.querySelectorAll("img.product-photo").forEach(img => {
+    const quitar = () => img.remove();
+    img.addEventListener("error", quitar, { once: true });
+    if (img.complete && img.naturalWidth === 0) quitar();
+  });
 }
 
 function filtrarProductos() {
@@ -111,12 +121,13 @@ function renderizarCotizacion() {
     const row = document.createElement("article");
     row.className = "quote-row";
     row.innerHTML = `
-      <div class="quote-product-icon">${escaparHTML(equipo.icono)}</div>
+      <div class="quote-product-icon">${equipo.imagen ? `<img class="product-photo" src="${escaparHTML(equipo.imagen)}" alt="">` : ""}<span>${escaparHTML(equipo.icono)}</span></div>
       <div class="quote-product-info"><h3>${escaparHTML(equipo.nombre)}</h3><p>${escaparHTML(equipo.modelo)} · ${equipo.precio == null ? "Precio por consultar" : formatoDinero(equipo.precio)}</p></div>
       <div class="quantity-control"><button type="button" aria-label="Disminuir" data-minus="${item.id}">−</button><strong>${item.cantidad}</strong><button type="button" aria-label="Aumentar" data-plus="${item.id}">+</button></div>
       <button type="button" class="remove-button" data-remove="${item.id}">Quitar</button>`;
     contenedor.appendChild(row);
   });
+  ocultarImagenesRotas(contenedor);
   document.getElementById("quoteSubtotal").textContent = formatoDinero(total);
   document.querySelectorAll("[data-minus]").forEach(btn => btn.addEventListener("click", () => cambiarCantidad(Number(btn.dataset.minus), -1)));
   document.querySelectorAll("[data-plus]").forEach(btn => btn.addEventListener("click", () => cambiarCantidad(Number(btn.dataset.plus), 1)));

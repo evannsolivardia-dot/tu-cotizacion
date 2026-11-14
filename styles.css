@@ -107,3 +107,10 @@ a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}b
 .event-panel p{color:#d3dadc}
 .event-text{min-width:0}
 @media(max-width:650px){.event-panel{min-height:280px}}
+
+/* Fotos de equipos (con ícono como respaldo si falta la imagen) */
+.product-visual{overflow:hidden}
+.product-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14px;background:#eef1f2}
+.product-visual:has(.product-photo) small{z-index:1;background:rgba(8,10,12,.78);padding:3px 8px}
+.quote-product-icon{position:relative;overflow:hidden}
+.quote-product-icon .product-photo{padding:3px}
