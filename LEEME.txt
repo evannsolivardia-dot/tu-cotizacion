@@ -1,0 +1,17 @@
+Coloca aquí las fotos de los equipos (JPG) con estos nombres:
+event-26a.jpg
+event-28a.jpg
+event-s218a.jpg
+event-m12a.jpg
+sara.jpg
+mara.jpg
+lara.jpg
+mh-350.jpg
+mh-200.jpg
+p3-9.jpg
+p2-6.jpg
+truss-3m.jpg
+truss-2m.jpg
+smoke-1500.jpg
+
+Si falta una foto, el sitio muestra el ícono del equipo.
